@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { ls } from './ls.js';
+import { up } from './up.js';
 
 const default_dir = os.homedir();
 let current_dir = default_dir;
@@ -25,6 +26,9 @@ if (userName) {
         switch (command[0]) {
           case 'ls':
             ls();
+            break;
+          case 'up':
+            current_dir = up(current_dir);
             break;
           default:
             throw new Error('Invalid input');
